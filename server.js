@@ -16,7 +16,7 @@ var parser = {
 
 // Database Connection
 var mongoose = require('mongoose');
- mongoose.connect('mongodb://127.0.0.1/cogs121' || process.env.MONGOLAB_URI);
+ mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/cogs121');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Mongo DB Connection Error:'));
 db.once('open', function(callback) {

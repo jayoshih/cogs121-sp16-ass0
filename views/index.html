@@ -3,33 +3,30 @@
 
 <head>
     <title></title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
     <form action="/message" method="post">
-    	Email: <input type="text" name="email"><br>
-    	Content: <textarea name="content"></textarea><br>
-    	<input type="submit" value="Submit">
+    	<input type="text" name="email" id="email_input" placeholder="Email"><br>
+    	<textarea name="content" id="content_input" placeholder="Content"></textarea><br>
+    	<input type="submit" value="Submit" id="submit_btn">
     </form>
-    {{#if data}}
-    <h3>My Messages</h3>
-    <table>
-    	<thead>
-    		<th>Email</th>
-    		<th>Content</th>
-    		<th>Date</th>
-    	</thead>
-    	<tbody>
-    		{{#each data}}
-    		<tr>
-    			<td>{{email}}</td>
-    			<td>{{content}}</td>
-    			<td>{{created}}</td>
-    		</tr>
-    		{{/each}}
-    	</tbody>
-    </table>
-    {{/if}}
+    
+    <h2>My Messages</h2>
+    <hr/>
+    <input type="text" placeholder="Search" id="search_input"/>
+    <div id="wrapper">
+        {{#each data}}
+            <div class="data">
+                <h4>Email: {{email}}</h4>
+                <p><em>Created: ({{created}})</em></p>
+                {{content}}
+            </div>
+        {{else}}
+            <h4>No messages to display.</h4>
+        {{/each}}
+    </div>
 </body>
 
 </html>
